@@ -1,0 +1,131 @@
+/* Components specific to B.C. Open Collection design */
+
+/* BCC Search Bar in Hero */
+.bcc-search-bar {
+    display: flex;
+    width: 100%;
+    max-width: 1000px; /* Constrain width */
+    background-color: var(--bcc-text-light); /* White background for search bar */
+    border-radius: 25px; /* Pill shape */
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.bcc-search-bar input {
+    flex-grow: 1;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.1em;
+    outline: none;
+    background: transparent;
+    color: var(--bcc-text-dark);
+}
+
+.bcc-search-bar input::placeholder {
+    color: #666;
+}
+
+.bcc-search-button {
+    background-color: darkgreen;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 0 25px 25px 0; /* Only right side rounded */
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bcc-search-button:hover {
+    background-color: #005700; /* Darker green on hover */
+}
+
+/* Learn More Link */
+.bcc-learn-more {
+    margin-top: 10px;
+}
+
+.bcc-learn-more a {
+    color: var(--bcc-text-light);
+    text-decoration: none;
+    font-size: 0.95em;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s ease;
+}
+
+.bcc-learn-more a:hover {
+    color: #cceeff;
+}
+
+/* Subject Cards */
+.subject-card {
+    background-color: var(--card-bg-light-blue); /* Default card background, will be overridden */
+    border: 1px solid var(--bcc-border-gray);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative; /* For icon positioning */
+    min-height: 120px; /* Ensure consistent height */
+    overflow: hidden; /* For icon */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.subject-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.subject-card .card-content {
+    flex-grow: 1;
+    z-index: 1; /* Keep content above icon */
+}
+
+.subject-card .card-title {
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--bcc-text-dark);
+    margin-bottom: 5px;
+}
+
+.subject-card .card-results {
+    font-size: 0.9em;
+    color: var(--bcc-secondary-color); /* A lighter text color for results count */
+}
+
+.subject-card .card-icon {
+    position: absolute;
+    bottom: -10px; /* Position slightly outside */
+    right: -10px; /* Position slightly outside */
+    font-size: 4em; /* Large icon */
+    color: rgba(0, 0, 0, 0.1); /* Very faint icon color */
+    pointer-events: none; /* Make sure it doesn't interfere with clicks */
+    z-index: 0;
+}
+
+/* Specific background colors for each card (based on image) */
+.subject-card:nth-child(1) { background-color: var(--card-bg-orange); } /* Academic/Career Success */
+.subject-card:nth-child(2) { background-color: var(--card-bg-green); } /* Art and Design */
+.subject-card:nth-child(3) { background-color: var(--card-bg-reddish); } /* Biological/Physical Sciences */
+.subject-card:nth-child(4) { background-color: var(--card-bg-blueish); } /* Business */
+.subject-card:nth-child(5) { background-color: var(--card-bg-purple); } /* Communication & Writing */
+.subject-card:nth-child(6) { background-color: var(--card-bg-teal); } /* Computer Science */
+.subject-card:nth-child(7) { background-color: var(--card-bg-brown); } /* Earth and Ocean Sciences */
+.subject-card:nth-child(8) { background-color: var(--card-bg-yellow); } /* Education */
+.subject-card:nth-child(9) { background-color: var(--card-bg-grey); } /* Engineering */
+.subject-card:nth-child(10) { background-color: var(--card-bg-pink); } /* Health and Medical */
+.subject-card:nth-child(11) { background-color: var(--card-bg-light-blue); } /* Hospitality/Tourism */
+.subject-card:nth-child(12) { background-color: var(--card-bg-orange-light); } /* Humanities */
+/* ... continue for other cards if you add more to match the exact order/colors */
+/* Using nth-child is good for a fixed set, for dynamic content you might add a class directly to each card */
