@@ -4,12 +4,13 @@
 .bcc-search-bar {
     display: flex;
     width: 100%;
-    max-width: 1000px; /* Constrain width */
+    width:  580px; /* Constrain width */
     background-color: var(--bcc-text-light); /* White background for search bar */
     border-radius: 25px; /* Pill shape */
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
+    margin-top: 2rem;
 }
 
 .bcc-search-bar input {
@@ -43,25 +44,6 @@
 
 .bcc-search-button:hover {
     background-color: #005700; /* Darker green on hover */
-}
-
-/* Learn More Link */
-.bcc-learn-more {
-    margin-top: 10px;
-}
-
-.bcc-learn-more a {
-    color: var(--bcc-text-light);
-    text-decoration: none;
-    font-size: 0.95em;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    transition: color 0.2s ease;
-}
-
-.bcc-learn-more a:hover {
-    color: #cceeff;
 }
 
 /* Subject Cards */

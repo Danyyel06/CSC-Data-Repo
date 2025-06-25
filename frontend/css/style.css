@@ -106,7 +106,7 @@ body {
 
 /* Main Content Area */
 .bcc-main-content {
-    max-width: 1400px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 0 0px; /* Consistent padding */
 }
@@ -177,7 +177,10 @@ hr{
 
 .filters-group{
     float: left !important  ;
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 25% !important; /* Adjust width as needed */
+    flex-basis: 100%;
    
 
 }
@@ -201,7 +204,7 @@ hr{
 }
 
 .filter-group select {
-    width: 100%; /* Makes the dropdown take full width of its container */
+    width: 30% !important; /* Makes the dropdown take full width of its container */
     padding: 5px 20px; /* Internal spacing within the dropdown */
     border: 1px solid var(--bcc-border-gray); /* Light grey border */
     border-radius: 5px; /* Slightly rounded corners */
@@ -211,19 +214,21 @@ hr{
 }
 
 .filters-panel .bcc-button {
-    width: 100%; /* Makes buttons full width within the filter panel */
+    width: 50%; /* Makes buttons full width within the filter panel */
     margin-top: 10px; /* Space above buttons */
 }
 
 /* Specific button styles (also in components.css) */
 .bcc-button {
     padding: 10px 15px;
+    margin: 10px 0;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.2s ease;
     font-weight: 600;
+    width: 20%;
 }
 
 .bcc-button-primary {
