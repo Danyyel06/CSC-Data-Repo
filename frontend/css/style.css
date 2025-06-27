@@ -3,32 +3,47 @@
 /* Color Palette (sampled from the image) */
 :root {
     --bcc-dark-blue: #004F7F;
-    --bcc-medium-blue: #007bff; /* Primary button, links */
+    --bcc-medium-blue: #007bff;
+    /* Primary button, links */
     --bcc-light-blue: #e8f0fe;
     --bcc-text-dark: #333333;
     --bcc-text-light: #ffffff;
     --bcc-bg-light: #f8f9fa;
-    --bcc-bg-dark: #2a3a50; /* Hero section background */
+    --bcc-bg-dark: #2a3a50;
+    /* Hero section background */
     --bcc-border-gray: #dddddd;
 
     /* Card specific background colors (approximate) */
-    --card-bg-orange: #ffe0b2; /* Academic/Career Success */
-    --card-bg-green: #c8e6c9; /* Art and Design */
-    --card-bg-reddish: #ffcdd2; /* Biological/Physical Sciences */
-    --card-bg-blueish: #bbdefb; /* Business */
-    --card-bg-purple: #e1bee7; /* Communication & Writing */
-    --card-bg-teal: #b2ebf2; /* Computer Science */
-    --card-bg-brown: #d7ccc8; /* Earth and Ocean Sciences */
-    --card-bg-yellow: #fff9c4; /* Education */
-    --card-bg-grey: #cfd8dc; /* Engineering */
-    --card-bg-pink: #f8bbd0; /* Health and Medical */
-    --card-bg-light-blue: #b3e5fc; /* Hospitality/Tourism */
-    --card-bg-orange-light: #ffecb3; /* Humanities */
+    --card-bg-orange: #ffe0b2;
+    /* Academic/Career Success */
+    --card-bg-green: #c8e6c9;
+    /* Art and Design */
+    --card-bg-reddish: #ffcdd2;
+    /* Biological/Physical Sciences */
+    --card-bg-blueish: #bbdefb;
+    /* Business */
+    --card-bg-purple: #e1bee7;
+    /* Communication & Writing */
+    --card-bg-teal: #b2ebf2;
+    /* Computer Science */
+    --card-bg-brown: #d7ccc8;
+    /* Earth and Ocean Sciences */
+    --card-bg-yellow: #fff9c4;
+    /* Education */
+    --card-bg-grey: #cfd8dc;
+    /* Engineering */
+    --card-bg-pink: #f8bbd0;
+    /* Health and Medical */
+    --card-bg-light-blue: #b3e5fc;
+    /* Hospitality/Tourism */
+    --card-bg-orange-light: #ffecb3;
+    /* Humanities */
 }
 
 
 body {
-    font-family: 'Open Sans', Arial, sans-serif; /* A common, clean sans-serif */
+    font-family: 'Open Sans', Arial, sans-serif;
+    /* A common, clean sans-serif */
     margin: 0;
     padding: 0;
     background-color: var(--bcc-bg-light);
@@ -61,8 +76,9 @@ body {
 }
 
 .bcc-logo {
-    height: 60px; /* Adjust as needed for your logo */
-    
+    height: 60px;
+    /* Adjust as needed for your logo */
+
 }
 
 .bcc-tagline {
@@ -88,7 +104,8 @@ body {
 }
 
 .bcc-nav a:hover {
-    color: #cceeff; /* Lighter shade on hover */
+    color: #cceeff;
+    /* Lighter shade on hover */
 }
 
 .bcc-login {
@@ -108,26 +125,30 @@ body {
 .bcc-main-content {
     max-width: 100%;
     margin: 0 auto;
-    padding: 0 0px; /* Consistent padding */
+    padding: 0 0px;
+    /* Consistent padding */
 }
 
 
-hr{
+hr {
     padding: 0px;
     margin: 0px;
     color: darkgreen !important;
     background-color: darkgreen !important;
 }
+
 /* Hero Section */
 .hero-section {
-    background-color: black; /* Dark blue background */
+    background-color: black;
+    /* Dark blue background */
     color: var(--bcc-text-light);
     padding: 70px 60px;
     margin-bottom: 1px;
     display: flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    /* Allows wrapping on smaller screens */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
 }
@@ -136,7 +157,7 @@ hr{
     max-width: 600px;
     text-align: left;
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
 }
 
 .hero-title {
@@ -157,9 +178,11 @@ hr{
 }
 
 .hero-illustration img {
-    width: 27rem; /* Adjust size of your illustration */
+    width: 27rem;
+    /* Adjust size of your illustration */
     height: 27rem;
-    display : flex; /* Remove extra space below image */
+    display: flex;
+    /* Remove extra space below image */
     animation: moveUpDown 6s infinite alternate ease-in-out;
 }
 
@@ -167,28 +190,28 @@ hr{
 @media (max-width: 1199px) {
     .hero-illustration img {
         width: 18rem;
-        height: 18rem;     
+        height: 18rem;
     }
 }
 
 @media (max-width: 1024px) {
     .hero-illustration img {
         width: 14rem;
-        height: 14rem;  
+        height: 14rem;
     }
 
     .hero-title {
-    font-size: 2.3em;
-    font-weight: 700;
-    margin-bottom: 15px;
-    line-height: 1.2;
-}
+        font-size: 2.3em;
+        font-weight: 700;
+        margin-bottom: 15px;
+        line-height: 1.2;
+    }
 
-.hero-subtitle {
-    font-size: 0.9em;
-    margin-bottom: 30px;
-    opacity: 0.9;
-}
+    .hero-subtitle {
+        font-size: 0.9em;
+        margin-bottom: 30px;
+        opacity: 0.9;
+    }
 }
 
 @media (max-width: 960px) {
@@ -200,24 +223,29 @@ hr{
 
 
 @keyframes moveUpDown {
-   0% {
-     transform: translateY(0); /* Start at the original position */
-   }
-   50%{
-    transform: translateY(-35px); /* Move up by 20 pixels (adjust as needed) */
-   }
-   100% {
-     transform: translateY(5px)
-   }
- }
+    0% {
+        transform: translateY(0);
+        /* Start at the original position */
+    }
 
-.filters-group{
-    float: left !important  ;
+    50% {
+        transform: translateY(-35px);
+        /* Move up by 20 pixels (adjust as needed) */
+    }
+
+    100% {
+        transform: translateY(5px)
+    }
+}
+
+.filters-group {
+    float: left !important;
     display: flex !important;
     flex-direction: column !important;
-    width: 25% !important; /* Adjust width as needed */
+    width: 25% !important;
+    /* Adjust width as needed */
     flex-basis: 100%;
-   
+
 
 }
 
@@ -225,33 +253,47 @@ hr{
     font-size: 1.5em;
     margin-top: 0;
     margin-bottom: 20px;
-    color: var(--bcc-dark-blue); /* Uses the primary dark blue */
+    color: var(--bcc-dark-blue);
+    /* Uses the primary dark blue */
     font-weight: 700;
 }
 
 .filter-group {
-    margin-bottom: 15px; /* Adds spacing between each filter */
+    margin-bottom: 15px;
+    /* Adds spacing between each filter */
 }
 
 .filter-group label {
-    display: block; /* Ensures label is on its own line above the select */
-    margin-bottom: 5px; /* Space between label and select */
-    font-weight: bold; /* Makes the label text bold */
+    display: block;
+    /* Ensures label is on its own line above the select */
+    margin-bottom: 5px;
+    /* Space between label and select */
+    font-weight: bold;
+    /* Makes the label text bold */
 }
 
 .filter-group select {
-    width: 30% !important; /* Makes the dropdown take full width of its container */
-    padding: 5px 20px; /* Internal spacing within the dropdown */
-    border: 1px solid var(--bcc-border-gray); /* Light grey border */
-    border-radius: 5px; /* Slightly rounded corners */
-    background-color: white; /* White background for the dropdown */
-    font-size: 1em; /* Standard font size */
-    box-sizing: border-box; /* Ensures padding and border don't increase overall width */
+    width: 30% !important;
+    /* Makes the dropdown take full width of its container */
+    padding: 5px 20px;
+    /* Internal spacing within the dropdown */
+    border: 1px solid var(--bcc-border-gray);
+    /* Light grey border */
+    border-radius: 5px;
+    /* Slightly rounded corners */
+    background-color: white;
+    /* White background for the dropdown */
+    font-size: 1em;
+    /* Standard font size */
+    box-sizing: border-box;
+    /* Ensures padding and border don't increase overall width */
 }
 
 .filters-panel .bcc-button {
-    width: 50%; /* Makes buttons full width within the filter panel */
-    margin-top: 10px; /* Space above buttons */
+    width: 50%;
+    /* Makes buttons full width within the filter panel */
+    margin-top: 10px;
+    /* Space above buttons */
 }
 
 /* Specific button styles (also in components.css) */
@@ -268,12 +310,14 @@ hr{
 }
 
 .bcc-button-primary {
-    background-color: darkgreen; /* Blue background for Apply */
+    background-color: darkgreen;
+    /* Blue background for Apply */
     color: white;
 }
 
 .bcc-button-secondary {
-    background-color: #6c757d; /* Grey background for Clear */
+    background-color: #6c757d;
+    /* Grey background for Clear */
     color: white;
 }
 
@@ -299,42 +343,58 @@ hr{
 
 /* --- Material Item Card (Detailed View) --- */
 .material-item-card {
-    background-color: var(--bcc-card-bg); /* White background */
-    border: 1px solid var(--bcc-border-gray); /* Light grey border */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+    background-color: var(--bcc-card-bg);
+    /* White background */
+    border: 1px solid var(--bcc-border-gray);
+    /* Light grey border */
+    border-radius: 8px;
+    /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    /* Subtle shadow */
     display: flex;
-    flex-direction: column; /* Stacks sections vertically */
-    overflow: hidden; /* Ensures rounded corners clip content */
-    position: relative; /* For the top-right tag */
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+    flex-direction: column;
+    /* Stacks sections vertically */
+    overflow: hidden;
+    /* Ensures rounded corners clip content */
+    position: relative;
+    /* For the top-right tag */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* Smooth hover effect */
 }
 
 .material-item-card:hover {
-    transform: translateY(-3px); /* Lifts slightly on hover */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12); /* More prominent shadow on hover */
+    transform: translateY(-3px);
+    /* Lifts slightly on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+    /* More prominent shadow on hover */
 }
 
 .card-header-tag {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: #3d8f8d; /* Teal/dark green color from image */
-    color: var(--bcc-text-light); /* White text */
+    background-color: #3d8f8d;
+    /* Teal/dark green color from image */
+    color: var(--bcc-text-light);
+    /* White text */
     padding: 5px 15px;
     font-size: 0.85em;
     font-weight: 600;
-    border-bottom-left-radius: 8px; /* Rounded bottom-left corner only */
-    z-index: 2; /* Ensures it's above other content */
+    border-bottom-left-radius: 8px;
+    /* Rounded bottom-left corner only */
+    z-index: 2;
+    /* Ensures it's above other content */
 }
 
 .card-image-section {
     position: relative;
     width: 100%;
     /* Aspect ratio for the image container - adjust as needed based on your images */
-    padding-bottom: 75%; /* Creates a 4:3 aspect ratio (height is 75% of width) */
+    padding-bottom: 75%;
+    /* Creates a 4:3 aspect ratio (height is 75% of width) */
     overflow: hidden;
-    flex-shrink: 0; /* Prevents it from shrinking */
+    flex-shrink: 0;
+    /* Prevents it from shrinking */
 }
 
 .card-image-section img {
@@ -343,24 +403,30 @@ hr{
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Covers the area, cropping if necessary */
+    object-fit: cover;
+    /* Covers the area, cropping if necessary */
     animation: moveUpDownAnotherSection 2s infinite alternate ease-in-out;
 }
 
 @keyframes moveUpDownAnotherSection {
-   0% {
-     transform: translateY(0); /* Start at the original position */
-   }
+    0% {
+        transform: translateY(0);
+        /* Start at the original position */
+    }
 
-   100% {
-     transform: translateY(-15px)
-   }
- }
+    100% {
+        transform: translateY(-15px)
+    }
+}
+
 .card-image-overlay-text {
     position: absolute;
-    top: 5px; /* Adjust as needed */
-    right: 5px; /* Adjust as needed */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    top: 5px;
+    /* Adjust as needed */
+    right: 5px;
+    /* Adjust as needed */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background */
     color: white;
     padding: 3px 8px;
     font-size: 0.75em;
@@ -370,11 +436,13 @@ hr{
 
 .card-content-section {
     padding: 15px 20px;
-    flex-grow: 1; /* Allows content section to take up available space */
+    flex-grow: 1;
+    /* Allows content section to take up available space */
 }
 
 .card-material-title {
-    font-size: 1.5em; /* Larger title */
+    font-size: 1.5em;
+    /* Larger title */
     font-weight: 700;
     color: var(--bcc-text-dark);
     margin-top: 0;
@@ -384,43 +452,57 @@ hr{
 
 .card-material-author {
     font-size: 1em;
-    color: #555; /* Slightly lighter text for author */
+    color: #555;
+    /* Slightly lighter text for author */
     margin-bottom: 0;
 }
 
 .card-badges-section {
     padding: 15px 20px;
-    border-top: 1px solid var(--bcc-border-gray); /* Separator line */
+    border-top: 1px solid var(--bcc-border-gray);
+    /* Separator line */
     display: flex;
-    gap: 15px; /* Space between badges */
-    justify-content: flex-start; /* Aligns badges to the left */
+    gap: 15px;
+    /* Space between badges */
+    justify-content: flex-start;
+    /* Aligns badges to the left */
     align-items: center;
 }
 
 .card-badge {
     display: inline-flex;
     align-items: center;
-    gap: 5px; /* Space between icon and text */
+    gap: 5px;
+    /* Space between icon and text */
     font-size: 0.9em;
     font-weight: 600;
-    padding: 5px 10px; /* Padding for the badge itself */
-    border-radius: 20px; /* Pill shape */
-    white-space: nowrap; /* Prevents text from wrapping */
+    padding: 5px 10px;
+    /* Padding for the badge itself */
+    border-radius: 20px;
+    /* Pill shape */
+    white-space: nowrap;
+    /* Prevents text from wrapping */
 }
 
 .adopted-badge {
-    background-color: #e6f7ff; /* Light blue background */
-    color: #007bff; /* Blue text */
-    border: 1px solid #b3e0ff; /* Blue border */
+    background-color: #e6f7ff;
+    /* Light blue background */
+    color: #007bff;
+    /* Blue text */
+    border: 1px solid #b3e0ff;
+    /* Blue border */
 }
 
 .reviewed-badge {
-    background-color: #e6ffe6; /* Light green background */
-    color: #28a745; /* Green text */
-    border: 1px solid #b3ffb3; /* Green border */
+    background-color: #e6ffe6;
+    /* Light green background */
+    color: #28a745;
+    /* Green text */
+    border: 1px solid #b3ffb3;
+    /* Green border */
 }
 
-a{
+a {
     text-decoration: none;
     color: green;
 }
@@ -440,25 +522,33 @@ a{
 /* Applies styles when the screen width is 768px or less */
 @media (max-width: 768px) {
     .hero-section {
-        flex-direction: column; /* Stacks the text content and illustration vertically */
-        text-align: center; /* Centers the text within the hero section */
-        padding: 40px 20px; /* Reduces padding for smaller screens */
+        flex-direction: column;
+        /* Stacks the text content and illustration vertically */
+        text-align: center;
+        /* Centers the text within the hero section */
+        padding: 40px 20px;
+        /* Reduces padding for smaller screens */
         /* Ensure there's enough space below the hero section if it was relying on image height */
         margin-bottom: 20px;
     }
 
     .hero-text-content {
-        max-width: 100%; /* Allows the text content to take full width */
-        text-align: center; /* Ensures the text is centered */
-        margin-bottom: 20px; /* Adds space below the text content if there's another element after it */
+        max-width: 100%;
+        /* Allows the text content to take full width */
+        text-align: center;
+        /* Ensures the text is centered */
+        margin-bottom: 20px;
+        /* Adds space below the text content if there's another element after it */
     }
 
     .hero-title {
-        font-size: 2em; /* Makes the main title smaller for mobile */
+        font-size: 2em;
+        /* Makes the main title smaller for mobile */
     }
 
     .hero-subtitle {
-        font-size: 0.9em; /* Adjusts subtitle font size */
+        font-size: 0.9em;
+        /* Adjusts subtitle font size */
     }
 
     /* The .hero-illustration img is already hidden at 960px, so no specific mobile image styling is needed here,
@@ -469,58 +559,89 @@ a{
 /* Applies styles when the screen width is 480px or less (for very small devices) */
 @media (max-width: 480px) {
     .hero-section {
-        padding: 30px 15px; /* Further reduces padding for very small screens */
+        padding: 30px 15px;
+        /* Further reduces padding for very small screens */
     }
+
     .hero-title {
-        font-size: 1.7em; /* Even smaller font size for very narrow screens */
+        font-size: 1.7em;
+        /* Even smaller font size for very narrow screens */
     }
+
     .hero-subtitle {
-        font-size: 0.8em; /* Further adjustment for subtitle */
+        font-size: 0.8em;
+        /* Further adjustment for subtitle */
     }
 }
 
 /* --- Media Query for Tablets (Portrait) and Larger Phones --- */
 /* Applies styles when the screen width is 768px or less */
 @media (max-width: 768px) {
+
     /* Adjustments for filter dropdowns */
     .filter-group select {
         /* This overrides the 30% width to make it full width on mobile.
            The !important is necessary here to override your existing !important.
            Consider removing !important from your base styles if possible in the future. */
         width: 100% !important;
-        padding: 8px 15px; /* Adjust padding for better touch targets */
-        font-size: 0.95em; /* Slightly adjust font size */
+        padding: 8px 15px;
+        /* Adjust padding for better touch targets */
+        font-size: 0.95em;
+        /* Slightly adjust font size */
     }
 
     /* Adjustments for buttons within the filters panel */
     .filters-panel .bcc-button {
-        width: 100%; /* Make buttons take full width within their panel */
-        margin-top: 8px; /* Adjust spacing above buttons */
-        padding: 10px 10px; /* Adjust padding for full-width buttons */
+        width: 100%;
+        /* Make buttons take full width within their panel */
+        margin-top: 8px;
+        /* Adjust spacing above buttons */
+        padding: 10px 10px;
+        /* Adjust padding for full-width buttons */
     }
 
-    /* If your .filters-panel itself is a flex container and needs to stack its children */
-    /* Uncomment and adjust if your .filters-panel needs its direct children stacked:
-    .filters-panel {
-        flex-direction: column;
-        align-items: flex-start; // Or 'center' if you prefer
+    .bcc-button {
+        padding: 10px 15px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.2s ease;
+        font-weight: 600;
+        width: 100%;
     }
-    */
 }
 
 /* --- Media Query for Smaller Mobile Phones --- */
 /* Applies styles when the screen width is 480px or less (for very small devices) */
 @media (max-width: 480px) {
     .filter-group {
-        margin-bottom: 10px; /* Slightly less spacing between filter groups */
+        margin-bottom: 10px;
+        /* Slightly less spacing between filter groups */
     }
 
     .filter-group select {
-        padding: 6px 12px; /* Further reduce padding */
-        font-size: 0.9em; /* Smaller font size for very small screens */
+        padding: 6px 12px;
+        /* Further reduce padding */
+        font-size: 0.9em;
+        /* Smaller font size for very small screens */
     }
 
     .filters-panel .bcc-button {
-        padding: 8px 8px; /* Smaller vertical padding for buttons */
+        padding: 8px 8px;
+        /* Smaller vertical padding for buttons */
+    }
+
+    .bcc-button {
+        padding: 10px 15px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.2s ease;
+        font-weight: 600;
+        width: 100%;
     }
 }
