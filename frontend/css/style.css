@@ -496,7 +496,7 @@ a{
     .filters-panel .bcc-button {
         width: 100%; /* Make buttons take full width within their panel */
         margin-top: 8px; /* Adjust spacing above buttons */
-        padding: 10px 0; /* Adjust padding for full-width buttons */
+        padding: 10px 10px; /* Adjust padding for full-width buttons */
     }
 
     /* If your .filters-panel itself is a flex container and needs to stack its children */
@@ -521,6 +521,6 @@ a{
     }
 
     .filters-panel .bcc-button {
-        padding: 8px 0; /* Smaller vertical padding for buttons */
+        padding: 8px 8px; /* Smaller vertical padding for buttons */
     }
 }
