@@ -436,3 +436,45 @@ a{
 }
 
 
+/* --- Media Query for Tablets (Portrait) and Larger Phones --- */
+/* Applies styles when the screen width is 768px or less */
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column; /* Stacks the text content and illustration vertically */
+        text-align: center; /* Centers the text within the hero section */
+        padding: 40px 20px; /* Reduces padding for smaller screens */
+        /* Ensure there's enough space below the hero section if it was relying on image height */
+        margin-bottom: 20px;
+    }
+
+    .hero-text-content {
+        max-width: 100%; /* Allows the text content to take full width */
+        text-align: center; /* Ensures the text is centered */
+        margin-bottom: 20px; /* Adds space below the text content if there's another element after it */
+    }
+
+    .hero-title {
+        font-size: 2em; /* Makes the main title smaller for mobile */
+    }
+
+    .hero-subtitle {
+        font-size: 0.9em; /* Adjusts subtitle font size */
+    }
+
+    /* The .hero-illustration img is already hidden at 960px, so no specific mobile image styling is needed here,
+       unless you intend to show a different, smaller image specifically for mobile */
+}
+
+/* --- Media Query for Smaller Mobile Phones --- */
+/* Applies styles when the screen width is 480px or less (for very small devices) */
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 30px 15px; /* Further reduces padding for very small screens */
+    }
+    .hero-title {
+        font-size: 1.7em; /* Even smaller font size for very narrow screens */
+    }
+    .hero-subtitle {
+        font-size: 0.8em; /* Further adjustment for subtitle */
+    }
+}
