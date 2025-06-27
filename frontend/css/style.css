@@ -478,3 +478,49 @@ a{
         font-size: 0.8em; /* Further adjustment for subtitle */
     }
 }
+
+/* --- Media Query for Tablets (Portrait) and Larger Phones --- */
+/* Applies styles when the screen width is 768px or less */
+@media (max-width: 768px) {
+    /* Adjustments for filter dropdowns */
+    .filter-group select {
+        /* This overrides the 30% width to make it full width on mobile.
+           The !important is necessary here to override your existing !important.
+           Consider removing !important from your base styles if possible in the future. */
+        width: 100% !important;
+        padding: 8px 15px; /* Adjust padding for better touch targets */
+        font-size: 0.95em; /* Slightly adjust font size */
+    }
+
+    /* Adjustments for buttons within the filters panel */
+    .filters-panel .bcc-button {
+        width: 100%; /* Make buttons take full width within their panel */
+        margin-top: 8px; /* Adjust spacing above buttons */
+        padding: 10px 0; /* Adjust padding for full-width buttons */
+    }
+
+    /* If your .filters-panel itself is a flex container and needs to stack its children */
+    /* Uncomment and adjust if your .filters-panel needs its direct children stacked:
+    .filters-panel {
+        flex-direction: column;
+        align-items: flex-start; // Or 'center' if you prefer
+    }
+    */
+}
+
+/* --- Media Query for Smaller Mobile Phones --- */
+/* Applies styles when the screen width is 480px or less (for very small devices) */
+@media (max-width: 480px) {
+    .filter-group {
+        margin-bottom: 10px; /* Slightly less spacing between filter groups */
+    }
+
+    .filter-group select {
+        padding: 6px 12px; /* Further reduce padding */
+        font-size: 0.9em; /* Smaller font size for very small screens */
+    }
+
+    .filters-panel .bcc-button {
+        padding: 8px 0; /* Smaller vertical padding for buttons */
+    }
+}

@@ -195,7 +195,7 @@
 
     .bcc-search-button {
         padding: 8px 12px; /* Match input padding */
-        font-size: 0.9em; /* Smaller font size */
+        font-size: 0.7em; /* Smaller font size */
         border-radius: 0 20px 20px 0; /* Adjust button border radius */
         /* If flex-wrap is used above, you might want button to take full width: */
         /* width: 100%; */
