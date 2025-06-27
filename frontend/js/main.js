@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (errorMessage) errorMessage.style.display = 'none';
         lectureMaterialsContainer.innerHTML = ''; // Clear previous content
 
-        let url = new URL('http://127.0.0.1:5000/materials');
+        let url = new URL('/materials', window.location.origin);
 
         // Add search and filter parameters to the URL
         if (searchTerm) {
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch(`http://127.0.0.1:5000/download/${fileName}`);
+            const response = await fetch('/download/${fileName}');
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}, message: ${await response.text()}`);
