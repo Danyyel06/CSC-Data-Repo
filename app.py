@@ -16,8 +16,8 @@ db = SQLAlchemy(app)
 # Ensure database tables are created when the app starts
 # This block should be run once, typically during deployment or initial setup.
 # Running it on every app start is fine for development but less common in production.
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
 
 # --- Define Your Database Model ---
 class LectureMaterial(db.Model):
