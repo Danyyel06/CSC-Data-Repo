@@ -1,136 +1,151 @@
-// Main application logic and event handling
+document.addEventListener('DOMContentLoaded', () => {
+    const lectureMaterialsContainer = document.getElementById('lectureMaterialsGrid'); // Main container
+    const loadingMessage = document.getElementById('loadingMessage');
+    const errorMessage = document.getElementById('errorMessage');
 
-import * as api from './api.js'; // Import all functions from api.js
-import * as ui from './ui.js';   // Import all functions from ui.js
-import { debounce } from './utils.js'; // Import specific utility function
+    // Get filter elements
+    const mainSearchBar = document.getElementById('mainSearchBar');
+    const mainSearchButton = document.getElementById('mainSearchButton');
+    const levelFilter = document.getElementById('levelFilter');
+    const semesterFilter = document.getElementById('semesterFilter');
+    const applyFiltersButton = document.getElementById('applyFiltersButton');
+    const clearFiltersButton = document.getElementById('clearFiltersButton');
 
-// Get DOM elements
-const searchInput = document.getElementById('searchInput');
-const searchButton = document.getElementById('searchButton');
-const levelFilter = document.getElementById('levelFilter');
-const semesterFilter = document.getElementById('semesterFilter');
-const courseFilter = document.getElementById('courseFilter');
-const applyFiltersButton = document.getElementById('applyFiltersButton');
-const clearFiltersButton = document.getElementById('clearFiltersButton');
-const materialsList = document.getElementById('materialsList'); // To attach download listeners
-const openFiltersButton = document.getElementById('openFiltersButton');
-const closeFiltersButton = document.getElementById('closeFiltersButton');
+    // Function to fetch lecture materials from the Flask API with search and filter parameters
+    // Added 'limit' parameter to control the number of results fetched
+    async function fetchLectureMaterials(searchTerm = '', level = '', semester = '', limit = null) { // limit is now a parameter
+        if (loadingMessage) loadingMessage.style.display = 'block';
+        if (errorMessage) errorMessage.style.display = 'none';
+        lectureMaterialsContainer.innerHTML = ''; // Clear previous content
 
+        let url = new URL('http://127.0.0.1:5000/materials');
 
-// State variables for current filters and search term
-let currentSearchTerm = '';
-let currentFilters = {
-    course_id: null,
-    level_id: null,
-    semester_id: null
-};
+        // Add search and filter parameters to the URL
+        if (searchTerm) {
+            url.searchParams.append('search', searchTerm);
+        }
+        if (level) {
+            url.searchParams.append('level', level);
+        }
+        if (semester) {
+            url.searchParams.append('semester', semester);
+        }
+        
+        // NEW: Add limit to the URL if it's provided
+        if (limit !== null) {
+            url.searchParams.append('limit', limit);
+        }
 
-/**
- * Fetches and displays materials based on current search and filter state.
- */
-async function fetchAndDisplayMaterials() {
-    const params = { ...currentFilters };
-    if (currentSearchTerm) {
-        params.search = currentSearchTerm;
-    }
-    const materials = await api.getMaterials(params);
-    ui.displayMaterials(materials);
-}
+        try {
+            const response = await fetch(url);
+            
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+            }
 
-/**
- * Initializes filter dropdowns with data from the API.
- */
-async function initializeFilters() {
-    const levels = await api.getLevels();
-    ui.populateFilterDropdown(levelFilter, levels, 'All Levels');
+            const materials = await response.json();
 
-    const semesters = await api.getSemesters();
-    ui.populateFilterDropdown(semesterFilter, semesters, 'All Semesters');
+            if (loadingMessage) loadingMessage.style.display = 'none';
 
-    const courses = await api.getCourses();
-    // For courses, display CourseCode and CourseTitle together
-    const formattedCourses = courses.map(course => ({
-        id: course.id,
-        name: `${course.code} - ${course.title}`
-    }));
-    ui.populateFilterDropdown(courseFilter, formattedCourses, 'All Courses');
-}
+            if (materials.length === 0) {
+                lectureMaterialsContainer.innerHTML = '<p>No lecture materials found matching your criteria.</p>';
+                return;
+            }
 
-/**
- * Handles applying filters based on dropdown selections.
- */
-function handleApplyFilters() {
-    currentFilters.level_id = levelFilter.value ? parseInt(levelFilter.value) : null;
-    currentFilters.semester_id = semesterFilter.value ? parseInt(semesterFilter.value) : null;
-    currentFilters.course_id = courseFilter.value ? parseInt(courseFilter.value) : null;
-    fetchAndDisplayMaterials();
-    // Close filter panel on mobile after applying filters
-    if (window.innerWidth <= 767) { // Check if it's a mobile view
-        ui.toggleFiltersPanel(false);
-    }
-}
+            materials.forEach(material => {
+                const materialCard = document.createElement('div');
+                materialCard.className = 'material-item-card';
 
-/**
- * Handles clearing all filters.
- */
-function handleClearFilters() {
-    levelFilter.value = '';
-    semesterFilter.value = '';
-    courseFilter.value = '';
-    currentFilters = {
-        course_id: null,
-        level_id: null,
-        semester_id: null
-    };
-    fetchAndDisplayMaterials();
-    // Close filter panel on mobile after clearing filters
-    if (window.innerWidth <= 767) { // Check if it's a mobile view
-        ui.toggleFiltersPanel(false);
-    }
-}
+                materialCard.innerHTML = `
+                    <div class="card-image-section">
+                        <img src="assets/images/Docs.png" alt="${material.title} Cover">
+                    </div>
+                    <div class="card-content-section">
+                        <h3 class="card-material-title">${material.course_code} - ${material.title}</h3>
+                        <p>Level: ${material.level}</p>
+                        <p>Semester: ${material.semester}</p>
+                    </div>
+                    <div class="card-badges-section">
+                        <span class="card-badge adopted-badge">
+                            <button class="button-download" data-filename="${material.file_name}"><i class="fas fa-download"></i> Download File</button>
+                        </span>
+                    </div>
+                `;
+                lectureMaterialsContainer.appendChild(materialCard);
+            });
 
-/**
- * Handles the main search button click or enter key press.
- */
-function handleSearch() {
-    currentSearchTerm = searchInput.value.trim();
-    fetchAndDisplayMaterials();
-}
+            document.querySelectorAll('.download-button').forEach(button => {
+                button.addEventListener('click', handleDownload);
+            });
 
-/**
- * Handles click events on the materials list, specifically for download buttons.
- * Uses event delegation.
- */
-function handleMaterialListClick(event) {
-    const downloadButton = event.target.closest('.button-download');
-    if (downloadButton) {
-        const materialId = downloadButton.dataset.materialId;
-        if (materialId) {
-            api.downloadMaterial(parseInt(materialId));
+        } catch (error) {
+            console.error('Error fetching lecture materials:', error);
+            if (loadingMessage) loadingMessage.style.display = 'none';
+            if (errorMessage) {
+                errorMessage.textContent = `Failed to load materials: ${error.message}. Please ensure the Flask server is running.`;
+                errorMessage.style.display = 'block';
+            }
+            lectureMaterialsContainer.innerHTML = '<p style = "text-align: center">Could not load materials. Please try again later.</p>';
         }
     }
-}
 
-// --- Event Listeners ---
-document.addEventListener('DOMContentLoaded', () => {
-    initializeFilters();       // Populate filter dropdowns
-    fetchAndDisplayMaterials(); // Load initial materials
-});
+    // Function to handle file downloads (remains the same)
+    async function handleDownload(event) {
+        const fileName = event.target.dataset.filename;
+        if (!fileName) {
+            console.error('No filename found for download button.');
+            return;
+        }
 
-searchButton.addEventListener('click', handleSearch);
+        try {
+            const response = await fetch(`http://127.0.0.1:5000/download/${fileName}`);
 
-// Debounce search input for real-time suggestions (optional, but good for UX)
-searchInput.addEventListener('input', debounce(handleSearch, 500));
-searchInput.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
-        handleSearch();
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}, message: ${await response.text()}`);
+            }
+
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+        } catch (error) {
+            console.error('Error downloading file:', error);
+            alert(`Failed to download ${fileName}: ${error.message}`);
+        }
     }
+
+    // Event Listeners for Search and Filter Buttons
+    mainSearchButton.addEventListener('click', () => {
+        const searchTerm = mainSearchBar.value;
+        const level = levelFilter.value;
+        const semester = semesterFilter.value;
+        // When searching/filtering, we want all relevant results, so no limit here
+        fetchLectureMaterials(searchTerm, level, semester); 
+    });
+
+    applyFiltersButton.addEventListener('click', () => {
+        const searchTerm = mainSearchBar.value; 
+        const level = levelFilter.value;
+        const semester = semesterFilter.value;
+        // When applying filters, we want all relevant results, so no limit here
+        fetchLectureMaterials(searchTerm, level, semester);
+    });
+
+    clearFiltersButton.addEventListener('click', () => {
+        mainSearchBar.value = ''; // Clear search input
+        levelFilter.value = ''; // Reset level filter
+        semesterFilter.value = ''; // Reset semester filter
+        // When clearing, fetch the initial limited set again
+        fetchLectureMaterials('', '', '', 8); // Display first 8 materials again
+    });
+
+    // NEW: Initial fetch when the page loads, displaying a limited number of materials
+    // You can adjust this number (e.g., 4, 6, 8, 10) based on your design
+    fetchLectureMaterials('', '', '', 8); // Load the first 8 materials on page load
 });
-
-applyFiltersButton.addEventListener('click', handleApplyFilters);
-clearFiltersButton.addEventListener('click', handleClearFilters);
-materialsList.addEventListener('click', handleMaterialListClick); // Event delegation for downloads
-
-// Mobile filter panel toggles
-openFiltersButton.addEventListener('click', () => ui.toggleFiltersPanel(true));
-closeFiltersButton.addEventListener('click', () => ui.toggleFiltersPanel(false));

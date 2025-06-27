@@ -46,11 +46,11 @@ body {
 
 .bcc-header-content {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 2.8rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 10px;
 }
 
 .bcc-logo-section {
@@ -61,7 +61,7 @@ body {
 }
 
 .bcc-logo {
-    height: 40px; /* Adjust as needed for your logo */
+    height: 60px; /* Adjust as needed for your logo */
     
 }
 
@@ -162,6 +162,42 @@ hr{
     display : flex; /* Remove extra space below image */
     animation: moveUpDown 6s infinite alternate ease-in-out;
 }
+
+
+@media (max-width: 1199px) {
+    .hero-illustration img {
+        width: 18rem;
+        height: 18rem;     
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero-illustration img {
+        width: 14rem;
+        height: 14rem;  
+    }
+
+    .hero-title {
+    font-size: 2.3em;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 0.9em;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+}
+
+@media (max-width: 960px) {
+    .hero-illustration img {
+        display: none;
+    }
+}
+
+
 
 @keyframes moveUpDown {
    0% {
