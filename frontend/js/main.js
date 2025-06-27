@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 lectureMaterialsContainer.appendChild(materialCard);
             });
 
-            document.querySelectorAll('.download-button').forEach(button => {
+            document.querySelectorAll('.button-download').forEach(button => {
                 button.addEventListener('click', handleDownload);
             });
 
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch('/download/${fileName}');
+            const response = await fetch(`/download/${fileName}`);
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}, message: ${await response.text()}`);
